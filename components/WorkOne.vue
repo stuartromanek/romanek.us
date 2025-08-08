@@ -1,0 +1,253 @@
+<template>
+  <div class="work-blurb">
+    <h3>An open source content management system with a beautiful editing experience.</h3>
+    <div class="work-blurb__inner">
+      <p>
+        Content management systems typically come in one of two flavors:
+        Sleek, intuitive editing experiences inside rigid, closed-source SaaS
+        products or a developer-centric, we-can-do-anything approach that
+        forces editors down unnecessary paths of manual linking, endless CRUD forms, and
+        other processes that feel divorced from the end experience.
+      </p>
+      <p>
+        Balancing an intuitive, in-context, beautiful editing experience
+        while staying true to Apostrophe's core mission of being a robust,
+        DX-forward app framework is a constant challenge of constraints. Each
+        part of Apostrophe must be overridable, configurable by both developers and
+        editors, and have plenty of hooks and escape hatches that allow the thing you're
+        building to feel purpose-built, rather than fitting a square peg in a round hole.
+      </p>
+    </div>
+  </div>
+  <div class="work-items">
+    <Media media-src="ui-marquee" />
+    <Media media-src="ui-in-context" />
+    <Media media-src="ui-content-management" />
+    <div class="row square">
+      <Media
+        media-src="ui-sq-tagging"
+        :modifiers="['square']"
+      />
+      <Media
+        media-src="ui-sq-shortcuts-menu"
+        :modifiers="['square']"
+      />
+      <Media
+        media-src="ui-sq-ai-seo"
+        :modifiers="['square']"
+      />
+    </div>
+    <Media media-src="ui-widget-editing" />
+    <Media media-src="ui-palette" />
+    <Media media-src="ui-permissions-grid" />
+  </div>
+  <div class="work-blurb">
+    <h3>Other brand, web, and marketing work for Apostrophe Technologies</h3>
+    <div class="work-blurb__inner">
+      <p>
+        In addition to the design, UX, and engineering of ApostropheCMS the software I am also responsible for the
+        design and maintenance of the Apostrophe Technologies brand family, marketing material, and other web presences.
+        Here are a few snapshots.
+      </p>
+    </div>
+  </div>
+  <div class="work-items">
+    <Media
+      media-src="apostrophecms-home-2"
+      media-type="image"
+      :modifiers="['contain']"
+    />
+    <Media
+      media-src="apostrophecms-brand-library"
+      media-type="image"
+      :modifiers="['contain']"
+    />
+    <Media
+      media-src="apostrophecms-pricing"
+      media-type="image"
+      :modifiers="['contain']"
+    />
+    <div class="row square">
+      <Media
+        media-src="apostrophecms-stickers"
+        media-type="image"
+        :modifiers="['square']"
+      />
+      <Media
+        media-src="apostrophecms-opensource"
+        media-type="image"
+        :modifiers="['square']"
+      />
+      <Media
+        media-src="apostrophecms-hat"
+        media-type="image"
+        :modifiers="['square']"
+      />
+    </div>
+    <div class="row square">
+      <Media
+        media-src="apostrophecms-glitch-mock"
+        media-type="image"
+        :modifiers="['square', 'contain']"
+      />
+      <Media
+        media-src="apostrophecms-wake"
+        media-type="image"
+        :modifiers="['square', 'contain']"
+      />
+      <Media
+        media-src="apostrophecms-plantlife-mockup"
+        media-type="image"
+        :modifiers="['square', 'contain']"
+      />
+    </div>
+    <Media
+      media-src="apostrophecms-brand-guide-3"
+      media-type="image"
+      :modifiers="['contain']"
+    />
+    <Media 
+      media-src="apostrophecms-footer"
+      media-type="image"
+      :modifiers="['contain']"
+    />
+  </div>
+  <div class="work-blurb">
+    <h3>Miscellaneous design and development work</h3>
+    <div class="work-blurb__inner">
+      <p>
+        A few other projects.
+      </p>
+    </div>
+  </div>
+  <div class="work-items">
+    <Media media-src="blkmtn-home" />
+    <Media
+      media-src="blkmtn-directors"
+      :modifiers="['full-width']"
+    />
+    <div class="row square">
+      <Media
+        media-src="blkmtn-mobile-directors"
+        :modifiers="['contain']"
+      />
+      <Media
+        media-src="blkmtn-mobile-home"
+        :modifiers="['contain']"
+      />
+    </div>
+    <Media
+      media-src="wrt-desktop"
+      :modifiers="['full-width']"
+    />
+    <Media media-src="ccd-desktop" />
+    <div class="work-blurb">
+      <h3>image.png</h3>
+      <div class="work-blurb__inner">
+        <p>
+          Select graphic experiments done in the margins. No context, no clients.
+        </p>
+      </div>
+    </div>
+    <div class="row square">
+      <Media media-src="__11" media-type="image" :modifiers="['contain']" caption="The homepage of Apostrophecms.com" />
+      <Media media-src="__10" media-type="image" :modifiers="['contain']" caption="The homepage of Apostrophecms.com" />
+    </div>
+    <div class="row square">
+      <Media media-src="__4" media-type="image" :modifiers="['contain']" caption="The homepage of Apostrophecms.com" />
+      <!-- <Media media-src="__5" media-type="image" :modifiers="['contain']" caption="The homepage of Apostrophecms.com"/> -->
+      <Media media-src="__6" media-type="image" :modifiers="['contain']" caption="The homepage of Apostrophecms.com" />
+    </div>
+    <div class="row square">
+      <Media media-src="__7" media-type="image" :modifiers="['contain']" caption="The homepage of Apostrophecms.com" />
+      <Media media-src="__8" media-type="image" :modifiers="['contain']" caption="The homepage of Apostrophecms.com" />
+      <Media media-src="__9" media-type="image" :modifiers="['contain']" caption="The homepage of Apostrophecms.com" />
+    </div>
+  </div>
+
+</template>
+
+<style scoped lang="scss">
+.work-blurb {
+  display: grid;
+  margin: 5rem 0;
+  gap: 5%;
+  grid-template-columns: 43% 50%;
+  align-items: flex-end;
+  text-wrap: balance;
+
+  @media (max-width: 765px) {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 0;
+  }
+
+  p {
+    max-width: 670px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.work-items {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  gap: 3rem;
+
+  @media (max-width: 800px) {
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+}
+
+.square {
+  align-items: center;
+  justify-content: center;
+
+  &>.media-container {
+    max-width: 400px;
+  }
+}
+
+:deep(.media) {
+  max-width: 1000px;
+
+  &:nth-child(2n + 2) {
+    align-self: flex-end;
+  }
+
+  &:nth-child(3n) {
+    align-self: center;
+  }
+
+  &:nth-child(4n) {
+    max-width: 1200px;
+  }
+}
+
+.row :deep(.media) {
+  align-self: flex-start;
+}
+</style>

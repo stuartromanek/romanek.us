@@ -1,0 +1,16 @@
+{
+  "ui-marquee": "In-context text and image editing. Apostrophe lets you put editable strings anywhere on the page. Configure them as stylable rich text containers or bake the styles in behind the scenes and let the editor rip.",
+  "ui-in-context": "Layout editing with keyboard shortcuts. Cut, copy, duplicate, and delete content with a tap.",
+  "ui-content-management": "Sort, filter, and search your content database. Configure logical content groupings, customize manager tables to include media or other specialized fields. Create custom form fields using simple Vue composables.",
+  "ui-sq-tagging": "Intuitively manage media tagging. Extend tagging to any other content type.",
+  "ui-sq-shortcuts-menu": "Display the shortcut menu and watch it respond to your keystrokes.",
+  "ui-sq-ai-seo": "Enhance fields with AI. Pick your service provider, provide base prompts, and let editors refine as they work.",
+  "ui-widget-editing": "Manage complex, nested content simply. Watch the page respond to your changes in real time. A constant feedback loop.",
+  "ui-palette": "Wire any CSS properties to an in-context styler interface. Pull options from your site configuration, read and write CSS Variables, include media queries. Configure the stack navigation as makes sense.",
+  "ui-permissions-grid": "Configure and understand user roles.",
+  "apostrophecms-home-2": "The homepage of apostrophecms.com",
+  "blkmtn-home": "BLK MTN is a LA-based production & talent company with a global network working across film, music and photography. I worked with team on their refreshed identity and first major web release.",
+  "blkmtn-directors": "BLK MTN's Director listing.",
+  "wrt-desktop": "WRT is a team of planners, urban designers, architects, and landscape architects with offices in Philadelphia and San Francisco. A P'unk Avenue project.",
+  "ccd-desktop": "The Center City District (CCD) and Central Philadelphia Development Corporation (CPDC) work to enhance the vitality of Center City Philadelphia as a thriving 24-hour downtown and a great place to work, live, and have fun. A P'unk Avenue project. "
+}
