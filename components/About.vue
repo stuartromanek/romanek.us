@@ -4,19 +4,17 @@
       <div class="content" data-content>
           <Otto id="about-otto" :size="2" />
           <p id="primary-description">Hey, I'm Stuart Romanek, a digital designer and developer focusing on intuitive user experiences, durable interfaces, and seamlessly blending strategy and aesthetics.</p>
-          <button v-show="!revealed" class="reveal-button" @click="revealMore">Tap for a bit more about me ➞ </button>
-          <div ref="more" class="collapsable" data-more>
+          <More>
             <p>I aim to create expressive brands and software systems that are honest, resilient, and self-evident.</p>
             <p>
               I am the founding designer for <a href="http://apostrophecms.com" target="_blank">ApostropheCMS</a>, 
               an open source content management system that aims to marry an unopinionated, developer-first application 
               framework with a rich in-context editing interface. <br /> Think Rails + Squarespace in JavaScript.
             </p>
-          </div>
-
+          </More>
       </div>
       <figure id="pic">
-        <img src="assets/images/stuartromanek.jpg" alt="Portrait of Stuart Romanek">
+        <img src="/images/stuartromanek.jpg" alt="Portrait of Stuart Romanek">
         <!-- <figcaption>
           Me & Otto at Porchfest in W. Philadelphia, 2024
         </figcaption> -->
@@ -27,14 +25,6 @@
 
 <script setup>
   import { useTemplateRef, ref } from 'vue';
-
-  const revealed = ref(false);
-  const more = useTemplateRef('more');
-
-  function revealMore() {
-    revealed.value = true;
-    more.value.classList.add('revealed');
-  }
 
 </script>
 
@@ -53,6 +43,7 @@
 
     @media (max-width: vars.$mobile-breakpoint) {
       height: auto;
+      font-size: 1.3rem;
     }
 
     p {
@@ -70,49 +61,11 @@
     }
   }
 
-  #primary-description {
-    @media (max-width: vars.$mobile-breakpoint) {
-      font-size: 1.2rem;
-    }
-  }
-
-  .reveal-button {
-    all: unset;
-    cursor: pointer;
-    color: var(--color-gray-10);
-    font-size: 0.6rem;
-    font-family: monospace;
-    display: none;
-    @media (max-width: vars.$mobile-breakpoint) {
-      display: block;
-    }
-  }
-
-  .collapsable {
-    transition: all 0.5s ease-in-out;
-    overflow: hidden;
-
-    p {
-      transition: all 0.5s ease-in-out;
-    }
-
-    @media (max-width: vars.$mobile-breakpoint) {
-      max-height: 0;
-      &.revealed {
-        max-height: 9999px;
-
-        p {
-          opacity: 1;
-          &:first-of-type {
-            margin-top: 0;
-          }
-        }
-      }
-      p {
-        opacity: 0;
-      }
-    }
-  }
+  // #primary-description {
+  //   @media (max-width: vars.$mobile-breakpoint) {
+  //     font-size: 1.2rem;
+  //   }
+  // }
 
   .wrapper {
     display: flex;
@@ -121,6 +74,7 @@
     align-items: center;
     @media (max-width: vars.$mobile-breakpoint) {
       flex-direction: column-reverse;
+      align-items: flex-start;
     }
   }
 

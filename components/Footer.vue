@@ -1,11 +1,7 @@
 <template>
   <footer>
     <div class="container">
-      <!-- <h4>Thank</h4>
-      <img src="/images/rings-sm.webp" alt="A set of graphic rings with no specific meaning" style="filter: blur(0.5px)">
-      <h4>You.</h4> -->
       <h4>Thank you.</h4>
-      
     </div>
     <div class="info">
       <span>Stuart Romanek</span>
@@ -15,7 +11,7 @@
       <a target="_blank" href="https://www.are.na/stuart-romanek">Are.na</a>
       <a target="_blank" href="https://literal.club/stu">Reading</a>
       <a target="_blank" href="https://record.club/stu">Listening</a>
-      <a target="_blank" href="https://record.club/stu">Colophon</a>
+      <!-- <a target="_blank" href="https://record.club/stu">Colophon</a> -->
       <span class="net-container" @mouseover="show" @mouseout="showNet = false">
         <div v-show="showNet" ref="video" class="net">
           <video src="/video/net.mp4" autoplay muted loop playsinline />
@@ -71,13 +67,14 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
-footer {
-  position: relative;
-}
+
+  footer {
+    position: relative;
+  }
 
   .net-container {
     padding: relative;  
-    cursor: url('/images/pi.cur'), pointer;
+    cursor: url('/pi.cur'), pointer;
     padding: 5px;
   }
 
@@ -109,6 +106,11 @@ footer {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 0.7rem;
+
+    @media (max-width: vars.$mobile-breakpoint) {
+      flex-direction: column;
+      margin-bottom: 5rem;
+    }
     
     a {
       text-decoration: underline;

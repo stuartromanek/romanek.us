@@ -5,12 +5,16 @@
       <h3>Design & Code</h3>
     </div>
     <div class="controls">
-      <a href="mailto:sdr@romanek.us">Email me</a>
+      <a href="mailto:sdr@romanek.us">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail-icon lucide-mail"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+      </a>
       <button @click="scroll('prev')">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-big-left-icon lucide-arrow-big-left"><path d="M13 9a1 1 0 0 1-1-1V5.061a1 1 0 0 0-1.811-.75l-6.835 6.836a1.207 1.207 0 0 0 0 1.707l6.835 6.835a1 1 0 0 0 1.811-.75V16a1 1 0 0 1 1-1h6a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1z"/></svg>
+        Previous Item
+        <svg class="rotate" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 9a1 1 0 0 1-1-1V5.061a1 1 0 0 0-1.811-.75l-6.835 6.836a1.207 1.207 0 0 0 0 1.707l6.835 6.835a1 1 0 0 0 1.811-.75V16a1 1 0 0 1 1-1h6a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1z"/></svg>
       </button>
       <button @click="scroll('next')">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-big-right-icon lucide-arrow-big-right"><path d="M11 9a1 1 0 0 0 1-1V5.061a1 1 0 0 1 1.811-.75l6.836 6.836a1.207 1.207 0 0 1 0 1.707l-6.836 6.835a1 1 0 0 1-1.811-.75V16a1 1 0 0 0-1-1H5a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1z"/></svg>
+        Next Item
+        <svg class="rotate" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 9a1 1 0 0 0 1-1V5.061a1 1 0 0 1 1.811-.75l6.836 6.836a1.207 1.207 0 0 1 0 1.707l-6.836 6.835a1 1 0 0 1-1.811-.75V16a1 1 0 0 0-1-1H5a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1z"/></svg>
       </button>
     </div>
     
@@ -18,13 +22,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, useTemplateRef, defineProps, ref } from 'vue'
-
-// const showNet = ref(false);
-// const video = useTemplateRef('video');
-
 function scroll(direction = 'next') {
-  console.log('clickl');
   const SELECTOR = '[data-media]';
   const OFFSET = -20; // Adjust to account for sticky headers, etc.
   const BUFFER = 100;  // Leeway to consider partially visible elements as still "unseen"
@@ -58,38 +56,21 @@ function scroll(direction = 'next') {
   }
 }
 
-
-onMounted(() => {
-})
-
-// const props = defineProps({
-//   size: {
-//     type: Number,
-//     default: 1
-//   }
-// })
-
-// export {
-//   data() {
-//     return { backgroundImagePath }
-//   }
-// }
-
 </script>
 
 <style lang="scss" scoped>
   h2, h3 {
     all: unset;
     font-size: 0.7rem;
-    // color: #67a30c;
     font-weight: 600;
     letter-spacing: 0.5px;
   }
 
-  svg {
+  svg.rotate {
     transform: rotate(90deg);
+    margin-left: 0.25rem;
+    max-width: 18px;
   }
-// @import '../../assets/css/sass-variable.scss';
 
   #mobile-menu {
     position: fixed;
@@ -126,7 +107,6 @@ onMounted(() => {
     display: flex;
     align-items: center;
     justify-content: center;
-    // margin: 1rem 0 0;
     border-radius: 8px;
     height: 2rem;
     background-color: var(--color-gray-6);
@@ -135,7 +115,7 @@ onMounted(() => {
   button {
     padding-left: 1rem;
     padding-right: 1rem;
-    // flex-grow: 1;
+    font-size: 0.75rem;
   }
 
   a {

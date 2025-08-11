@@ -1,11 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
-  devtools: { enabled: false },  
+  devtools: { enabled: false },
+  ssr: true,
   app: {
     
     head: {
-      title: 'Stuart Romanek · Design & Code', // default fallback title
+      title: 'Stuart Romanek · Design & Code',
       htmlAttrs: {
         lang: 'en',
       },
@@ -57,23 +58,6 @@ export default defineNuxtConfig({
     defaultLocale: 'en',
     locales: [
       { code: 'en', name: 'English', file: 'en.json' },
-    ]
-  },
-
-  fonts: {
-    // defaults: {  
-    //   styles: ['normal', 'italic'],
-    // },
-    // local: {},
-    families: [
-      // { name: 'IBM Plex Mono', provider: 'google' },
-      // { name: 'Inconsolata', provider: 'google' },
-      // {
-      //   name: 'Optician Sans',
-      //   provider: 'none',
-      //   src: 'https://type.cargo.site/files/Cargo-DiatypePlusVariable.woff2',
-      //   // weights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
-      // }
     ]
   }
 })

@@ -2,7 +2,7 @@
   <header>
     <section>
       <div id="headshot">
-        <img src="assets/images/stuartromanek.jpg" alt="Head shot of Stuart Romanek">
+        <img src="/images/stuartromanek.jpg" alt="Head shot of Stuart Romanek">
       </div>
       <h1 id="name">
         Stuart Romanek

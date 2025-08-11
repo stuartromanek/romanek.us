@@ -50,6 +50,17 @@
 </template>
 
 <style scoped lang="scss">
+  #experience {
+    @media (max-width: vars.$mobile-breakpoint) {
+      font-size: 0.75rem;
+
+      overflow-y: scroll;
+
+      table {
+        min-width: 700px;
+      }
+    }
+  }
   h3 {
     margin: 5rem 0 1rem;
     font-size: 14px;
@@ -68,7 +79,7 @@
     align-items: center;
   }
 
-.rip {
+  .rip {
     position: relative;
     width: 28px;
     top: -2px;

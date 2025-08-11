@@ -1,23 +1,26 @@
 <template>
   <div class="work-blurb">
     <h3>An open source content management system with a beautiful editing experience.</h3>
-    <div class="work-blurb__inner">
-      <p>
-        Content management systems typically come in one of two flavors:
-        Sleek, intuitive editing experiences inside rigid, closed-source SaaS
-        products or a developer-centric, we-can-do-anything approach that
-        forces editors down unnecessary paths of manual linking, endless CRUD forms, and
-        other processes that feel divorced from the end experience.
-      </p>
-      <p>
-        Balancing an intuitive, in-context, beautiful editing experience
-        while staying true to Apostrophe's core mission of being a robust,
-        DX-forward app framework is a constant challenge of constraints. Each
-        part of Apostrophe must be overridable, configurable by both developers and
-        editors, and have plenty of hooks and escape hatches that allow the thing you're
-        building to feel purpose-built, rather than fitting a square peg in a round hole.
-      </p>
-    </div>
+    <More label="Designing ApostropheCMS >>">
+      <div class="work-blurb__inner">
+        <p>
+          Content management systems typically come in one of two flavors:
+          Sleek, intuitive editing experiences inside rigid, closed-source SaaS
+          products or a developer-centric, we-can-do-anything approach that
+          forces editors down unnecessary paths of manual linking, endless CRUD forms, and
+          other processes that feel divorced from the end experience.
+        </p>
+        <p>
+          Balancing an intuitive, in-context, beautiful editing experience
+          while staying true to Apostrophe's core mission of being a robust,
+          DX-forward app framework is a constant challenge of constraints. Each
+          part of Apostrophe must be overridable, configurable by both developers and
+          editors, and have plenty of hooks and escape hatches that allow the thing you're
+          building to feel purpose-built, rather than fitting a square peg in a round hole.
+        </p>
+      </div>
+    </More>
+
   </div>
   <div class="work-items">
     <Media media-src="ui-marquee" />
@@ -176,11 +179,12 @@
   align-items: flex-end;
   text-wrap: balance;
 
-  @media (max-width: 765px) {
+  @media (max-width: vars.$mobile-breakpoint) {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    margin-bottom: 3rem;
+    margin: 2rem 0;
+    align-items: flex-start;
   }
 
   p,

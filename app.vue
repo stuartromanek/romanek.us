@@ -8,6 +8,7 @@
   </div>
   <Footer />
   <MobileMenu />
+  <!-- <Colophon /> -->
 </template>
 
 <script setup>

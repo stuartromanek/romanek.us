@@ -1,0 +1,5 @@
+$mobile-breakpoint: 768px;
+
+:root {
+  --mobile-breakpoint: #{$mobile-breakpoint};
+}

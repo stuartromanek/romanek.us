@@ -4,7 +4,7 @@
       <video 
         v-if="mediaType === 'video'"
         ref="mediaRef"
-        :src="videos[mediaSrc]"
+        :src="getMediaPath(mediaSrc)"
         autoplay 
         muted 
         loop 
@@ -15,7 +15,7 @@
       <img 
         v-else
         ref="mediaRef"
-        :src="images[mediaSrc]"
+        :src="getMediaPath(mediaSrc)"
         class="media-element"
         alt=""
         @dblclick="handleMediaDoubleClick"
@@ -60,7 +60,7 @@
       >
         <video 
           v-if="mediaType === 'video'"
-          :src="videos[mediaSrc]"
+          :src="getMediaPath(mediaSrc)"
           autoplay 
           muted 
           loop 
@@ -70,7 +70,7 @@
         />
         <img 
           v-else
-          :src="images[mediaSrc]"
+          :src="getMediaPath(mediaSrc)"
           class="twin-media"
           alt=""
           @dblclick="handleMediaDoubleClick"
@@ -106,23 +106,13 @@
 <script setup>
 import { ref, reactive, onMounted, onUnmounted, computed, nextTick } from 'vue'
 import { filename } from 'pathe/utils'
-import FullscreenIcon from '~/assets/images/fullscreen.svg'
-import ShrinkIcon from '~/assets/images/shink.svg'
+import FullscreenIcon from './public/images/fullscreen.svg'
+import ShrinkIcon from './public/images/shrink.svg'
 
 const config = {
   fullsizeHeight: 100,
   fullsizeWidth: 100,
 }
-
-const videoGlob = import.meta.glob('~/assets/work/video/*.mp4', { eager: true });
-const videos = Object.fromEntries(
-  Object.entries(videoGlob).map(([key, value]) => [filename(key), value.default])
-);
-
-const imageGlob = import.meta.glob('~/assets/work/images/*.webp', { eager: true });
-const images = Object.fromEntries(
-  Object.entries(imageGlob).map(([key, value]) => [filename(key), value.default])
-);
 
 const props = defineProps({
   mediaSrc: { type: String, required: true },
@@ -134,6 +124,12 @@ const props = defineProps({
     return [];
   } }
 })
+
+const getMediaPath = function(name) {
+  const type = props.mediaType === 'image' ? 'images' : 'video';
+  const ext = type === 'images' ? 'webp' : 'webm';
+  return `/work/${type}/${name}.${ext}`;
+}
 
 const emit = defineEmits(['zoom-start', 'zoom-end', 'close-start', 'close-end'])
 
@@ -437,6 +433,10 @@ figcaption {
   transition: color 0.2s ease;
   padding: 10px 0;
   max-width: 550px;
+  @media (max-width: vars.$mobile-breakpoint) {
+    font-size: 0.75rem;
+    max-width: none;
+  }
 }
 
 figure {
