@@ -97,3 +97,13 @@ h4 {
   text-decoration-thickness: 1px;
   text-underline-offset: 6px;
 }
+
+.visually-hidden {
+  clip-path: inset(100%);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}

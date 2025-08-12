@@ -14,7 +14,7 @@
           </More>
       </div>
       <figure id="pic">
-        <img src="/images/stuartromanek.jpg" alt="Portrait of Stuart Romanek">
+        <NuxtImg src="/images/stuartromanek.webp" alt="Portrait of Stuart Romanek" preload />
         <!-- <figcaption>
           Me & Otto at Porchfest in W. Philadelphia, 2024
         </figcaption> -->

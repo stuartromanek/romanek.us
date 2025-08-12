@@ -1,25 +1,26 @@
 <template>
   <div :id="`media-${mediaSrc}`" class="media" :class="modifiers" data-media>
-    <figure ref="containerRef" class="media-container">
+    <figure
+      ref="containerRef"
+      class="media-container"
+      @dblclick="handleMediaDoubleClick"
+    >
       <video 
         v-if="mediaType === 'video'"
-        ref="mediaRef"
         :src="getMediaPath(mediaSrc)"
         autoplay 
         muted 
         loop 
         playsinline
         class="media-element"
-        @dblclick="handleMediaDoubleClick"
       />
-      <img 
+      <NuxtImg
         v-else
-        ref="mediaRef"
-        :src="getMediaPath(mediaSrc)"
         class="media-element"
-        alt=""
-        @dblclick="handleMediaDoubleClick"
-      >
+        :alt="mediaSrc"
+        :src="getMediaPath(mediaSrc)"
+        loading="lazy"
+      />
       <div class="controls controls--inline">
         <TransitionGroup 
           v-if="mediaType === 'video'"
@@ -57,6 +58,7 @@
         class="fullscreen-twin"
         :class="twinClasses"
         :style="twinStyle"
+        @dblclick="handleMediaDoubleClick"
       >
         <video 
           v-if="mediaType === 'video'"
@@ -66,15 +68,14 @@
           loop 
           playsinline
           class="twin-media"
-          @dblclick="handleMediaDoubleClick"
         />
-        <img 
+        <NuxtImg
           v-else
           :src="getMediaPath(mediaSrc)"
           class="twin-media"
-          alt=""
-          @dblclick="handleMediaDoubleClick"
-        >
+          :alt="mediaSrc"
+          loading="lazy"
+        />
         <div class="controls controls--fullscreen">
           <TransitionGroup 
             v-show="mediaType === 'video'"
@@ -105,7 +106,6 @@
 
 <script setup>
 import { ref, reactive, onMounted, onUnmounted, computed, nextTick } from 'vue'
-import { filename } from 'pathe/utils'
 import FullscreenIcon from './public/images/fullscreen.svg'
 import ShrinkIcon from './public/images/shrink.svg'
 
@@ -238,7 +238,7 @@ const { animateToFullscreen, animateToOriginal } = useMediaAnimation()
 const getElementPosition = (element) => {
   if (!element) return null
   
-  const rect = element.getBoundingClientRect()
+  const rect = element.getBoundingClientRect() || element.$el.getBoundingClientRect()
   return {
     top: rect.top,
     left: rect.left,
@@ -256,12 +256,12 @@ const setTwinPosition = (position) => {
 
 async function triggerZoom() {  
   try {
-    if (!containerRef.value || !mediaRef.value) {
+    if (!containerRef.value) {
       console.log('Missing refs')
       return
     }
     
-    const media = mediaRef.value
+    const media = containerRef.value.querySelector('img, video');
     const position = getElementPosition(media)
     
     if (!position) {
@@ -273,7 +273,6 @@ async function triggerZoom() {
     
     isAnimating.value = false
     isZoomed.value = false
-    // resetTwinState()
     setTwinPosition(position)
     await nextTick()
     if (twinRef.value) void twinRef.value.offsetHeight
@@ -311,9 +310,11 @@ async function triggerZoom() {
 
 async function closeZoom() {
   try {
-    if (!containerRef.value || !mediaRef.value || isAnimating.value) return
+    if (!containerRef.value || isAnimating.value) {
+      return;
+    }
     
-    const media = mediaRef.value
+    const media = containerRef.value.querySelector('img, video');
     const position = getElementPosition(media)
     
     if (!position) {
@@ -341,7 +342,6 @@ async function closeZoom() {
     
     isZoomed.value = false
     isAnimating.value = false
-    // resetTwinState()
     
     emit('close-end')
     

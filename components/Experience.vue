@@ -19,7 +19,7 @@
         <tr>
           <td>
             <div class="flex">
-              <img src="/images/rip.gif" class="rip" >
+              <NuxtImg class="rip" src="/images/rip.gif" alt="A headstone that reads RIP" />
               <span>P'unk Avenue</span>
             </div>
           </td>
@@ -30,7 +30,7 @@
         <tr>
           <td>
             <div class="flex">
-              <img src="/images/rip.gif" class="rip" >
+              <NuxtImg class="rip" src="/images/rip.gif" alt="A headstone that reads RIP" />
               <span>GHI Design</span>
             </div>
           </td>
