@@ -11,7 +11,8 @@
         autoplay 
         muted 
         loop 
-        playsinline
+        playsinline 
+        type="video/webm" 
         class="media-element"
       />
       <NuxtImg
@@ -19,7 +20,6 @@
         class="media-element"
         :alt="mediaSrc"
         :src="getMediaPath(mediaSrc)"
-        loading="lazy"
       />
       <div class="controls controls--inline">
         <TransitionGroup 
@@ -66,7 +66,8 @@
           autoplay 
           muted 
           loop 
-          playsinline
+          type="video/webm" 
+          playsinline 
           class="twin-media"
         />
         <NuxtImg
@@ -74,7 +75,6 @@
           :src="getMediaPath(mediaSrc)"
           class="twin-media"
           :alt="mediaSrc"
-          loading="lazy"
         />
         <div class="controls controls--fullscreen">
           <TransitionGroup 
