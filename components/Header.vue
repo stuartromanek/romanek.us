@@ -2,7 +2,7 @@
   <header>
     <section>
       <div id="headshot">
-        <NuxtImg src="/images/stuartromanek.jpg" alt="Head shot of Stuart Romanek" />
+        <NuxtImg src="/images/stuartromanek.webp" alt="Head shot of Stuart Romanek" />
       </div>
       <h1 id="name">
         Stuart Romanek

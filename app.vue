@@ -33,6 +33,7 @@
   }
 
   onMounted(() => {
+    umTrackView();
     const bodyStyles = window.getComputedStyle(document.body);
     const responsiveRules = [
       {
