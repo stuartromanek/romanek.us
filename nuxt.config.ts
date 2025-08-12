@@ -10,10 +10,23 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/scripts',
     'nuxt-svgo',
-    '@nuxtjs/i18n'
+    '@nuxtjs/i18n',
+    'nuxt-umami'
   ],
+  umami: {
+    id: '4ecfa65f-01a0-4648-977f-076a99709017',
+    host: 'https://cloud.umami.is',
+    autoTrack: true,
+    // proxy: 'cloak',
+    // useDirective: true,
+    ignoreLocalhost: true,
+    // excludeQueryParams: false,
+    // domains: ['cool-site.app', 'my-space.site'],
+    // customEndpoint: '/my-custom-endpoint',
+    // enabled: false,
+    // logErrors: true,
+  },
   app: {
-    
     head: {
       title: 'Stuart Romanek · Design & Code',
       htmlAttrs: {
