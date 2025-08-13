@@ -39,10 +39,11 @@
       {
         maxWidth: parseInt(bodyStyles.getPropertyValue('--mobile-breakpoint').split('px')[0]),
         className: 'is-mobile'
-      },
+      }
       // { maxWidth: 1024, className: 'is-tablet' }
     ];
-    responsiveRules.forEach(setupMediaQuery)
+    responsiveRules.forEach(setupMediaQuery);
+    document.body.classList.add('mounted');
   })
 
   onBeforeUnmount(() => {

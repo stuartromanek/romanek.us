@@ -51,11 +51,14 @@ header {
   }
 }
 
+p {
+  margin: 0;
+}
+
 section {
   display: flex;
   align-items: center;
   width: 50%;
-  // justify-content: space-between;
   gap: 3rem;
   @media (max-width: vars.$mobile-breakpoint) {
     width: 100%;

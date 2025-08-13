@@ -30,10 +30,10 @@
           class="control speeds"
           @click.stop="nextSpeed"
         >
-          <span v-show="speeds[speedIndex].value === 1" :key="1">1x</span>
-          <span v-show="speeds[speedIndex].value === 0.5" :key="0.5">0.5x</span>
-          <span v-show="speeds[speedIndex].value === 2" :key="2">2x</span>
-          <span v-show="speeds[speedIndex].value === 0" :key="0">Paused</span>
+          <span v-show="speeds[speedIndex].value === 1" :key="1" class="speed-value">1x</span>
+          <span v-show="speeds[speedIndex].value === 0.5" :key="0.5" class="speed-value">0.5x</span>
+          <span v-show="speeds[speedIndex].value === 2" :key="2" class="speed-value">2x</span>
+          <span v-show="speeds[speedIndex].value === 0" :key="0" class="speed-value">Paused</span>
         </TransitionGroup>
         <button 
           aria-label="Zoom to fullscreen" 
@@ -254,7 +254,7 @@ const setTwinPosition = (position) => {
   twinStyle.height = `${position.height}px`
 }
 
-async function triggerZoom() {  
+async function triggerZoom() {
   try {
     if (!containerRef.value) {
       console.log('Missing refs')
@@ -280,8 +280,6 @@ async function triggerZoom() {
     isZoomed.value = true
     isAnimating.value = true
     emit('zoom-start')
-
-    document.body.style.overflow = 'hidden';
     
     await new Promise(resolve => setTimeout(resolve, 10))
     
@@ -299,7 +297,7 @@ async function triggerZoom() {
     await animateToFullscreen(position)
     
     isAnimating.value = false
-    emit('zoom-end')
+    emit('zoom-end');
     
   } catch (error) {
     console.error('Zoom animation failed:', error)
@@ -335,8 +333,6 @@ async function closeZoom() {
     
     isAnimating.value = true
     emit('close-start')
-
-    document.body.style.overflow = 'auto';
     
     await animateToOriginal(position)
     
@@ -463,6 +459,10 @@ figure:hover {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+
+  @media (max-width: vars.$mobile-breakpoint) {
+    gap: 0.75rem;
+  }
 }
 
 .control {
@@ -483,8 +483,13 @@ figure:hover {
   backface-visibility: hidden;
   position: absolute;
 
+  @media (max-width: vars.$mobile-breakpoint) {
+    height: 36px;
+    min-width: 36px;
+  }
+
   &.speeds {
-    transform: translateX(-30px);
+    transform: translateX(-2rem);
     line-height: 1;
   }
 

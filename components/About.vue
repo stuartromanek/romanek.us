@@ -2,7 +2,7 @@
   <section id="about">
     <div class="wrapper">
       <div class="content" data-content>
-          <Otto id="about-otto" :size="2" />
+          <Otto id="about-otto" :size="2" style="margin-bottom: 1.5rem;" />
           <p id="primary-description">Hey, I'm Stuart Romanek, a digital designer and developer focusing on intuitive user experiences, durable interfaces, and seamlessly blending strategy and aesthetics.</p>
           <More>
             <p>I aim to create expressive brands and software systems that are honest, resilient, and self-evident.</p>
