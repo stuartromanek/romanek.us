@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
-  devtools: { enabled: false },
+  devtools: { enabled: true },
   ssr: true,
   modules: [
     '@nuxt/content',
@@ -40,14 +40,13 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-        { rel: 'icon', type: 'image/svg', href: '/favicon.svg' },
-        { rel: 'preconnect', href: 'https://rsms.me' },
-        { rel: 'stylesheet', href: 'https://rsms.me/inter/inter.css' },
+        { rel: 'icon', type: 'image/svg', href: '/favicon.svg' }
       ]
     }
   },
   // devtools: { enabled: false },
   css: [
+    '~/assets/css/inter.scss',
     '~/assets/css/variables.scss',
     '~/assets/css/global.scss'
   ],

@@ -14,7 +14,13 @@
           </More>
       </div>
       <figure id="pic">
-        <NuxtImg src="/images/stuartromanek.webp" alt="Portrait of Stuart Romanek" preload />
+        <NuxtImg
+          src="/images/stuartromanek.webp"
+          alt="Portrait of Stuart Romanek"
+          preload 
+          width="310"
+          height="413"
+        />
         <!-- <figcaption>
           Me & Otto at Porchfest in W. Philadelphia, 2024
         </figcaption> -->
@@ -81,7 +87,7 @@
   #pic {
     position: relative;
     display: block;
-    max-width: 310px;
+    width: 310px;
     font-size: 0.75rem;
 
     @media (max-width: vars.$mobile-breakpoint) {
@@ -95,6 +101,7 @@
 
     img {
       max-width: 100%;
+      width: 100%;
       border-radius: 8px;
     }
   }
