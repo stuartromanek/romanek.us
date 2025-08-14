@@ -7,7 +7,8 @@
     >
       <video 
         v-if="mediaType === 'video'"
-        :src="getMediaPath(mediaSrc)"
+        ref="videoRef"
+        :data-src="getMediaPath(mediaSrc)"
         autoplay 
         muted 
         loop 
@@ -20,6 +21,8 @@
         class="media-element"
         :alt="mediaSrc"
         :src="getMediaPath(mediaSrc)"
+        sizes="1200px sm:50vw md:800px"
+        loading="lazy"
       />
       <div class="controls controls--inline">
         <TransitionGroup 
@@ -75,6 +78,8 @@
           :src="getMediaPath(mediaSrc)"
           class="twin-media"
           :alt="mediaSrc"
+          sizes="1536px sm:50vw md:800px"
+          loading="lazy"
         />
         <div class="controls controls--fullscreen">
           <TransitionGroup 
@@ -134,10 +139,12 @@ const getMediaPath = function(name) {
 const emit = defineEmits(['zoom-start', 'zoom-end', 'close-start', 'close-end'])
 
 const containerRef = ref(null)
-const mediaRef = ref(null)
+// const mediaRef = ref(null)
 const twinRef = ref(null)
 const speedButtonRef = ref(null)
 const fullscreenSpeedButtonRef = ref(null)
+const videoRef = ref(null)
+let observer = null
 
 const isZoomed = ref(false)
 const originalPosition = ref(null)
@@ -163,6 +170,16 @@ const twinStyle = reactive({
   height: '0px',
 })
 
+
+const lazyLoadVideo = () => {
+  if (!videoRef.value) return
+  const src = videoRef.value.dataset.src
+  if (src && !videoRef.value.src) {
+    videoRef.value.src = src
+    videoRef.value.load()
+  }
+}
+
 const nextSpeed = () => {
   if (speeds.value[speedIndex.value + 1]) {
     speedIndex.value++
@@ -172,8 +189,8 @@ const nextSpeed = () => {
 
   setButtonWidth()
   
-  if (mediaRef.value && props.mediaType === 'video') {
-    mediaRef.value.playbackRate = speeds.value[speedIndex.value].value
+  if (videoRef.value && props.mediaType === 'video') {
+    videoRef.value.playbackRate = speeds.value[speedIndex.value].value
   }
   
   if (twinRef.value && props.mediaType === 'video') {
@@ -365,11 +382,31 @@ function handleMediaDoubleClick(event) {
 
 onMounted(() => {
   window.addEventListener('keydown', handleKeydown)
-  setButtonWidth()
+  setButtonWidth();
+  if (videoRef.value) {
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          lazyLoadVideo()
+          observer.unobserve(entry.target)
+        }
+      })
+    }, { threshold: 0.15 }) // load when 25% visible
+
+    if (videoRef.value) {
+      observer.observe(videoRef.value)
+    }
+  }
 })
 
 onUnmounted(() => {
-  window.removeEventListener('keydown', handleKeydown)
+  window.removeEventListener('keydown', handleKeydown);
+  if (videoRef.value) {
+    if (observer && videoRef.value) {
+      observer.unobserve(videoRef.value)
+      observer.disconnect()
+    }
+  }
 })
 </script>
 
@@ -522,7 +559,7 @@ figure:hover {
   transition-property: all;
   transition-delay: 0;
   transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
-  transition-duration: 0.5s;
+  transition-duration: 0.3s;
 }
 
 .media-twin--initial {
