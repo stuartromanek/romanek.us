@@ -42,7 +42,7 @@
     </div>
     <Media media-src="ui-widget-editing" />
     <Media media-src="ui-palette" />
-    <Media media-src="ui-permissions-grid" />
+    <Media media-src="ui-permissions-grid-fast" />
   </div>
   <div class="work-blurb">
     <h3>Other brand, web, and marketing work for Apostrophe Technologies</h3>
