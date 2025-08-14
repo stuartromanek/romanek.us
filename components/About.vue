@@ -22,6 +22,7 @@
           width="310"
           height="413"
           sizes="400px"
+          fetchpriority="high"
         />
         <!-- <figcaption>
           Me & Otto at Porchfest in W. Philadelphia, 2024
