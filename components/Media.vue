@@ -66,6 +66,7 @@
       >
         <video 
           v-if="mediaType === 'video'"
+          ref="twinVideoRef"
           :data-src="getMediaPath(mediaSrc)"
           autoplay 
           muted 
@@ -141,7 +142,7 @@ const getMediaPath = function(name) {
 const emit = defineEmits(['zoom-start', 'zoom-end', 'close-start', 'close-end'])
 
 const containerRef = ref(null)
-// const mediaRef = ref(null)
+const twinVideoRef = ref(null)
 const twinRef = ref(null)
 const speedButtonRef = ref(null)
 const fullscreenSpeedButtonRef = ref(null)
@@ -177,8 +178,10 @@ const lazyLoadVideo = () => {
   if (!videoRef.value) return
   const src = videoRef.value.dataset.src
   if (src && !videoRef.value.src) {
-    videoRef.value.src = src
+    videoRef.value.src = src;
+    twinVideoRef.value.src = src;
     videoRef.value.load()
+    twinVideoRef.value.load()
   }
 }
 
@@ -228,10 +231,12 @@ const useMediaAnimation = () => {
         resolve()
       }
       twinRef.value?.addEventListener('transitionend', handleAnimationEnd)
-      twinStyle.top = `${(100 - config.fullsizeHeight) / 2}vh`
+      // twinStyle.top = `${(100 - config.fullsizeHeight) / 2}vh`
+      twinStyle.top = '0px';
       twinStyle.left = `${(100 - config.fullsizeWidth) / 2}vw`
-      twinStyle.width = `${config.fullsizeWidth}vw`
-      twinStyle.height = `${config.fullsizeHeight}vh`
+      twinStyle.left = '0px';
+      twinStyle.width = '100vw'
+      twinStyle.height = '100vh'
     })
   }
 
@@ -287,6 +292,8 @@ async function triggerZoom() {
       console.error('Could not get element position')
       return
     }
+
+    console.log('position', position)
     
     originalPosition.value = position
     

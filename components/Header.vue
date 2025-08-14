@@ -9,18 +9,18 @@
       </h1>
       <h2 id="practice">
         <span>
-          <div class="triangle" />
+          <div class="triangle-shape" />
         </span>
         Design & Code
       </h2>
     </section>
     <section id="secondary">
       <span id="open" class="group">
-        <div class="circle" />
+        <div class="circle-shape" />
         <p>Open to new projects, people, and ideas</p>
       </span>
       <span id="contact" class="group">
-        <div class="square" />
+        <div class="square-shape" />
         <a href="mail:sdr@romanek.us">sdr@romanek.us</a>
       </span>
     </section>
@@ -115,7 +115,7 @@ h1, h2, .group {
 
 // Shapes
 
-.triangle {
+.triangle-shape {
   width: 0px;
   height: 0px;
   border-style: solid;
@@ -124,13 +124,13 @@ h1, h2, .group {
   transform: rotate(0deg);
 }
 
-.square {
+.square-shape {
   width: 12px;
   height: 12px;
   background: var(--color-green);
 }
 
-.circle {
+.circle-shape {
   width: 12px;
   height: 12px;
   border-radius: 50%;
