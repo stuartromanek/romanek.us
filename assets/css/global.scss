@@ -112,14 +112,14 @@ p {
 }
 
 // Fade up text
-h1, h2, h3, h4, h5, h6, p, a, span:not([class]), .details, img, svg {
+h1, h2, h3, h4, h5, h6, p, a, span:not([class]), .details, img, svg, .square, .circle {
   opacity: 0;
   transition: opacity 2s ease, filter 2s ease,;
   filter: blur(2px);
 }
 
 .mounted {
-  h1, h2, h3, h4, h5, h6, p, a, span:not([class]), .details, img, svg{
+  h1, h2, h3, h4, h5, h6, p, a, span:not([class]), .details, img, svg, .square, .circle{
     opacity: 1;
     filter: blur(0);
   }
