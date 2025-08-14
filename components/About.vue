@@ -18,8 +18,10 @@
           src="/images/stuartromanek.webp"
           alt="Portrait of Stuart Romanek"
           preload 
+          format="webp"
           width="310"
           height="413"
+          sizes="400px"
         />
         <!-- <figcaption>
           Me & Otto at Porchfest in W. Philadelphia, 2024

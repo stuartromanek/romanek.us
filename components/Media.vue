@@ -22,6 +22,7 @@
         :alt="mediaSrc"
         :src="getMediaPath(mediaSrc)"
         sizes="1200px sm:50vw md:800px"
+        format="webp"
         loading="lazy"
       />
       <div class="controls controls--inline">
@@ -65,7 +66,7 @@
       >
         <video 
           v-if="mediaType === 'video'"
-          :src="getMediaPath(mediaSrc)"
+          :data-src="getMediaPath(mediaSrc)"
           autoplay 
           muted 
           loop 
@@ -80,6 +81,7 @@
           :alt="mediaSrc"
           sizes="1536px sm:50vw md:800px"
           loading="lazy"
+          format="webp"
         />
         <div class="controls controls--fullscreen">
           <TransitionGroup 
