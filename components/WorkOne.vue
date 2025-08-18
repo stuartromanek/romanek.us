@@ -53,6 +53,11 @@
   </div>
   <div class="work-items">
     <Media
+      media-src="apostrophecms-wordmark"
+      media-type="image"
+      :modifiers="['full-width']"
+    />
+    <Media
       media-src="apostrophecms-home-2"
       media-type="image"
       :modifiers="['contain']"
@@ -62,10 +67,10 @@
       media-type="image"
       :modifiers="['contain']"
     />
-    <Media
+    <!-- <Media
       media-src="apostrophecms-tagline"
       media-type="image"
-    />
+    /> -->
     <div class="row square">
       <Media
       media-src="apostrophecms-stickers"
@@ -105,11 +110,11 @@
       media-type="image"
       :modifiers="['contain']"
     />
-    <Media
-      media-src="apostrophecms-browser-2"
+    <!-- <Media
+      media-src="apostrophecms-browser"
       media-type="image"
-      :modifiers="['contain']"
-    />
+      :modifiers="['contain', 'square']"
+    /> -->
     <Media 
       media-src="apostrophecms-footer"
       media-type="image"
@@ -249,6 +254,15 @@
 
   &:nth-child(4n) {
     max-width: 1200px;
+  }
+  @media (max-width: vars.$mobile-breakpoint) {
+    max-width: 100%;
+    display: block;
+    width: 100%;
+    .media-container {
+      display: block;
+      width: 100%;
+    }
   }
 }
 

@@ -21,7 +21,7 @@
         class="media-element"
         :alt="mediaSrc"
         :src="getMediaPath(mediaSrc)"
-        sizes="1200px sm:50vw md:800px"
+        
         format="webp"
         loading="lazy"
       />
@@ -80,7 +80,7 @@
           :src="getMediaPath(mediaSrc)"
           class="twin-media"
           :alt="mediaSrc"
-          sizes="1536px sm:50vw md:800px"
+          sizes="1536px sm:100vw md:800px"
           loading="lazy"
           format="webp"
         />
@@ -442,6 +442,12 @@ onUnmounted(() => {
 
   &.full-width {
     max-width: 100%;
+    .media-container {
+      width: 100%;
+      img {
+        width: 100%;
+      }
+    }
   }
 }
 
