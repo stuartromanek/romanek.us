@@ -6,23 +6,15 @@
       </div>
       <div class="content">
         <h3>
-          Apostrophe is a globally-minded technology company focused on creating incredible open source content
-          management tools for organizations<span>—from small businesses to the enterprise.</span>
+          Apostrophe Technologies is an open source content management company building beautifully designed tools for managing websites at scale.
         </h3>
         <More label="More ++">
           <p>
-            Born out of the hard-won experience of building hundreds of websites at Philadelphia digital agency 
-            <a
+            Apostrophe Technologies began at the Philadelphia agency <a
               class="underlined-link"
               href="https://technical.ly/startups/web-dev-punk-ave-acquired-yes"
               target="_blank"
-            >P'unk Avenue</a> (aquired), ApostropheCMS was built as a reaction to the clunky UX of traditional content
-            management systems and a want to make a mark on the emerging Node.js scene.
-          </p>
-          <p>
-            As Apostrophe's internal visual and user experience designer at P'unk, it was a natural fit for me to join
-            Apostrophe Technologies as the founding product and brand designer when we struck out to form a new open core
-            company.
+            >P'unk Avenue</a>, where ApostropheCMS was created to improve on traditional CMS platforms and embrace Node.js. I moved from my role as visual and UX designer at P’unk to become the founding product and brand designer at Apostrophe.
           </p>
         </More>
         <div class="details">

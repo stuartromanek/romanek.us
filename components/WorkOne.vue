@@ -4,19 +4,16 @@
     <More label="Designing ApostropheCMS >>">
       <div class="work-blurb__inner">
         <p>
-          Content management systems typically come in one of two flavors:
-          Sleek, intuitive editing experiences inside rigid, closed-source SaaS
-          products or a developer-centric, we-can-do-anything approach that
-          forces editors down unnecessary paths of manual linking, endless CRUD forms, and
-          other processes that feel divorced from the end experience.
+          Most content management systems fall into one of two categories: 
+          closed-source SaaS platforms with polished editing experiences, or open 
+          frameworks that prioritize developer flexibility at the expense of editor usability.
         </p>
         <p>
-          Balancing an intuitive, in-context, beautiful editing experience
-          while staying true to Apostrophe's core mission of being a robust,
-          DX-forward app framework is a constant challenge of constraints. Each
-          part of Apostrophe must be overridable, configurable by both developers and
-          editors, and have plenty of hooks and escape hatches that allow the thing you're
-          building to feel purpose-built, rather than fitting a square peg in a round hole.
+          Apostrophe aims to balance both. The challenge is creating an in-context, 
+          intuitive editing experience while maintaining the flexibility of a 
+          developer-first framework. Every part of Apostrophe is designed to be 
+          overridable and configurable, giving developers and editors the tools 
+          they need to create sites that feel purpose-built.
         </p>
       </div>
     </More>
@@ -61,51 +58,55 @@
       :modifiers="['contain']"
     />
     <Media
-      media-src="apostrophecms-brand-library"
+      media-src="apostrophecms-tweet"
       media-type="image"
       :modifiers="['contain']"
     />
+    <Media
+      media-src="apostrophecms-tagline"
+      media-type="image"
+    />
+    <div class="row square">
+      <Media
+      media-src="apostrophecms-stickers"
+      media-type="image"
+      :modifiers="['square']"
+      />
+      <Media
+      media-src="apostrophecms-opensource"
+      media-type="image"
+      :modifiers="['square']"
+      />
+      <Media
+      media-src="apostrophecms-hat"
+      media-type="image"
+      :modifiers="['square']"
+      />
+    </div>
+    <div class="row square">
+      <Media
+      media-src="apostrophecms-glitch-mock"
+      media-type="image"
+      :modifiers="['square', 'contain']"
+      />
+      <Media
+      media-src="apostrophecms-wake"
+      media-type="image"
+      :modifiers="['square', 'contain']"
+      />
+      <Media
+      media-src="apostrophecms-plantlife-mockup"
+      media-type="image"
+      :modifiers="['square', 'contain']"
+      />
+    </div>
     <Media
       media-src="apostrophecms-pricing"
       media-type="image"
       :modifiers="['contain']"
     />
-    <div class="row square">
-      <Media
-        media-src="apostrophecms-stickers"
-        media-type="image"
-        :modifiers="['square']"
-      />
-      <Media
-        media-src="apostrophecms-opensource"
-        media-type="image"
-        :modifiers="['square']"
-      />
-      <Media
-        media-src="apostrophecms-hat"
-        media-type="image"
-        :modifiers="['square']"
-      />
-    </div>
-    <div class="row square">
-      <Media
-        media-src="apostrophecms-glitch-mock"
-        media-type="image"
-        :modifiers="['square', 'contain']"
-      />
-      <Media
-        media-src="apostrophecms-wake"
-        media-type="image"
-        :modifiers="['square', 'contain']"
-      />
-      <Media
-        media-src="apostrophecms-plantlife-mockup"
-        media-type="image"
-        :modifiers="['square', 'contain']"
-      />
-    </div>
     <Media
-      media-src="apostrophecms-brand-guide-3"
+      media-src="apostrophecms-browser-2"
       media-type="image"
       :modifiers="['contain']"
     />
