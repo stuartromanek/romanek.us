@@ -5,26 +5,46 @@
       class="media-container"
       @dblclick="handleMediaDoubleClick"
     >
-      <video 
+
+      <template
         v-if="mediaType === 'video'"
-        ref="videoRef"
-        :data-src="getMediaPath(mediaSrc)"
-        autoplay 
-        muted 
-        loop 
-        playsinline 
-        type="video/webm" 
-        class="media-element"
-      />
+      >
+        <video
+          ref="videoRef"
+          class="media-element"
+          :style="{height: videoPlaying ? 'auto' : '0.5px'}"
+          autoplay 
+          muted 
+          loop 
+          playsinline 
+          type="video/webm" 
+        >
+          <source :data-src="getMediaPath(mediaSrc, 'webm')" type='video/webm' />
+          <source :data-src="getMediaPath(mediaSrc, 'mp4')" type='video/mp4' />
+        </video>
+        <Loading
+          v-show="!videoPlaying"
+        />
+      </template>
       <NuxtImg
         v-else
+        v-slot="{ src, isLoaded, imgAttrs }"
         class="media-element"
         :alt="mediaSrc"
         :src="getMediaPath(mediaSrc)"
-        
+        :custom="true"
         format="webp"
         loading="lazy"
-      />
+      >
+        <img
+          v-if="isLoaded"
+          v-bind="imgAttrs"
+          :src="src"
+        >
+        <Loading
+          v-else
+        />
+      </NuxtImg>
       <div class="controls controls--inline">
         <TransitionGroup 
           v-if="mediaType === 'video'"
@@ -64,17 +84,20 @@
         :style="twinStyle"
         @dblclick="handleMediaDoubleClick"
       >
-        <video 
+        <video
           v-if="mediaType === 'video'"
           ref="twinVideoRef"
-          :data-src="getMediaPath(mediaSrc)"
+          class="twin-media"
           autoplay 
           muted 
           loop 
-          type="video/webm" 
           playsinline 
-          class="twin-media"
-        />
+        >
+          <source :data-src="getMediaPath(mediaSrc, 'webm')" type='video/webm' />
+          <source :data-src="getMediaPath(mediaSrc, 'mp4')" type='video/mp4' />
+        </video>
+
+
         <NuxtImg
           v-else
           :src="getMediaPath(mediaSrc)"
@@ -133,10 +156,13 @@ const props = defineProps({
   } }
 })
 
-const getMediaPath = function(name) {
+const getMediaPath = function(name, vFormat = undefined) {
   const type = props.mediaType === 'image' ? 'images' : 'video';
-  const ext = type === 'images' ? 'webp' : 'webm';
-  return `/work/${type}/${name}.${ext}`;
+  let ext = type === 'images' ? 'webp' : 'webm';
+  if (vFormat) {
+    ext = vFormat;
+  }
+  return `/work/${type}/${ vFormat ? vFormat + '/' : ''}${name}.${ext}`;
 }
 
 const emit = defineEmits(['zoom-start', 'zoom-end', 'close-start', 'close-end'])
@@ -147,6 +173,7 @@ const twinRef = ref(null)
 const speedButtonRef = ref(null)
 const fullscreenSpeedButtonRef = ref(null)
 const videoRef = ref(null)
+const videoPlaying = ref(false)
 let observer = null
 
 const isZoomed = ref(false)
@@ -175,14 +202,19 @@ const twinStyle = reactive({
 
 
 const lazyLoadVideo = () => {
-  if (!videoRef.value) return
-  const src = videoRef.value.dataset.src
-  if (src && !videoRef.value.src) {
-    videoRef.value.src = src;
-    twinVideoRef.value.src = src;
-    videoRef.value.load()
-    twinVideoRef.value.load()
+  if (!videoRef.value) {
+    return
   }
+  console.log(videoRef.value.children);
+  const srcs = [ ...videoRef.value.children ];
+  const twins = [ ...twinVideoRef.value.children ];
+  srcs.forEach((src, index) => {
+    const path = src.dataset.src;
+    src.src = path;
+    twins[index].src = path;
+  });
+  videoRef.value.load()
+  twinVideoRef.value.load()
 }
 
 const nextSpeed = () => {
@@ -390,9 +422,12 @@ function handleMediaDoubleClick(event) {
 }
 
 onMounted(() => {
-  window.addEventListener('keydown', handleKeydown)
+  window.addEventListener('keydown', handleKeydown);
   setButtonWidth();
   if (videoRef.value) {
+    videoRef.value.addEventListener('playing', () => {
+      videoPlaying.value = true;
+    });
     observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -423,6 +458,8 @@ onUnmounted(() => {
 .media {
   position: relative;
   display: inline-block;
+  width: 100%;
+  
 
   &.contain .twin-media {
     object-fit: contain;
@@ -454,6 +491,8 @@ onUnmounted(() => {
 .media-container {
   position: relative;
   display: inline-block;
+  width: 100%;
+  min-height: 400px;
 }
 
 .media-container:hover .controls,
@@ -470,6 +509,7 @@ onUnmounted(() => {
 .media-element {
   display: block;
   max-width: 100%;
+  width: 100%;
   height: auto;
   border-radius: 8px;
 }
