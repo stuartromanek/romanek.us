@@ -201,7 +201,6 @@ const lazyLoadVideo = () => {
   if (!videoRef.value) {
     return
   }
-  console.log(videoRef.value.children);
   const srcs = [ ...videoRef.value.children ];
   const twins = [ ...twinVideoRef.value.children ];
   srcs.forEach((src, index) => {

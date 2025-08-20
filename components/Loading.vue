@@ -46,8 +46,9 @@ onMounted(() => {
     z-index: 2;
     width: 100%;
     height: 100%;
+    min-height: 400px;
     background-color: var(--color-gray-2);
-    position: absolute;
+    // position: absolute;
     border-radius: 8px;
     font-family: 'Courier New', monospace;
   }
