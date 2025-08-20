@@ -145,11 +145,26 @@
         :modifiers="['contain']"
       />
     </div>
+    <div class="row square">
+      <Media
+        media-src="andalusia-mobile"
+        :modifiers="['contain']"
+      />
+      <Media
+        media-src="orphan-mobile"
+        :modifiers="['contain']"
+      />
+    </div>
     <Media
       media-src="wrt-desktop"
       :modifiers="['full-width']"
     />
     <Media media-src="ccd-desktop" />
+    <Media
+      media-src="ccd-mobile"
+      :modifiers="['contain', 'center', 'mobile-width']"
+    />
+
     <div class="work-blurb">
       <h3>image.png</h3>
       <div class="work-blurb__inner">

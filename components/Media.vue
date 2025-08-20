@@ -16,8 +16,7 @@
           autoplay 
           muted 
           loop 
-          playsinline 
-          type="video/webm" 
+          playsinline
         >
           <source :data-src="getMediaPath(mediaSrc, 'webm')" type='video/webm' />
           <source :data-src="getMediaPath(mediaSrc, 'mp4')" type='video/mp4' />
@@ -35,9 +34,12 @@
         :custom="true"
         format="webp"
         loading="lazy"
+        fetchpriority="high"
+        preload
       >
         <img
           v-if="isLoaded"
+          ref="imageRef"
           v-bind="imgAttrs"
           :src="src"
         >
@@ -140,11 +142,6 @@ import { ref, reactive, onMounted, onUnmounted, computed, nextTick } from 'vue'
 import FullscreenIcon from './public/images/fullscreen.svg'
 import ShrinkIcon from './public/images/shrink.svg'
 
-const config = {
-  fullsizeHeight: 100,
-  fullsizeWidth: 100,
-}
-
 const props = defineProps({
   mediaSrc: { type: String, required: true },
   caption: { type: String, default: undefined },
@@ -165,14 +162,13 @@ const getMediaPath = function(name, vFormat = undefined) {
   return `/work/${type}/${ vFormat ? vFormat + '/' : ''}${name}.${ext}`;
 }
 
-const emit = defineEmits(['zoom-start', 'zoom-end', 'close-start', 'close-end'])
-
 const containerRef = ref(null)
 const twinVideoRef = ref(null)
 const twinRef = ref(null)
 const speedButtonRef = ref(null)
 const fullscreenSpeedButtonRef = ref(null)
 const videoRef = ref(null)
+const imageRef = ref(null)
 const videoPlaying = ref(false)
 let observer = null
 
@@ -337,7 +333,6 @@ async function triggerZoom() {
     
     isZoomed.value = true
     isAnimating.value = true
-    emit('zoom-start')
     
     await new Promise(resolve => setTimeout(resolve, 10))
     
@@ -355,7 +350,6 @@ async function triggerZoom() {
     await animateToFullscreen(position)
     
     isAnimating.value = false
-    emit('zoom-end');
     
   } catch (error) {
     console.error('Zoom animation failed:', error)
@@ -390,14 +384,11 @@ async function closeZoom() {
     }
     
     isAnimating.value = true
-    emit('close-start')
     
     await animateToOriginal(position)
     
     isZoomed.value = false
     isAnimating.value = false
-    
-    emit('close-end')
     
   } catch (error) {
     console.error('Close animation failed:', error)
@@ -486,13 +477,24 @@ onUnmounted(() => {
       }
     }
   }
+
+  &.center {
+    align-self: center !important;
+  }
+
+  &.mobile-width {
+    max-width: 35vw !important;
+    @media (max-width: vars.$mobile-breakpoint) {
+      max-width: 70vw;
+    }
+  }
 }
 
 .media-container {
   position: relative;
   display: inline-block;
   width: 100%;
-  min-height: 400px;
+  // min-height: 400px;
 }
 
 .media-container:hover .controls,
