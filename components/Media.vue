@@ -258,9 +258,7 @@ const useMediaAnimation = () => {
         resolve()
       }
       twinRef.value?.addEventListener('transitionend', handleAnimationEnd)
-      // twinStyle.top = `${(100 - config.fullsizeHeight) / 2}vh`
       twinStyle.top = '0px';
-      twinStyle.left = `${(100 - config.fullsizeWidth) / 2}vw`
       twinStyle.left = '0px';
       twinStyle.width = '100vw'
       twinStyle.height = '100vh'
