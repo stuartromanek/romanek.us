@@ -159,7 +159,7 @@ const getMediaPath = function(name, vFormat = undefined) {
   if (vFormat) {
     ext = vFormat;
   }
-  return `/work/${type}/${ vFormat ? vFormat + '/' : ''}${name}.${ext}`;
+  return `/work/${type}/${ vFormat ? vFormat + '/compressed/' : ''}${name}.${ext}`;
 }
 
 const containerRef = ref(null)
