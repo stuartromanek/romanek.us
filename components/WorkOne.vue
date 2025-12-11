@@ -165,7 +165,7 @@
       :modifiers="['contain', 'center', 'mobile-width']"
     />
 
-    <div class="work-blurb">
+    <!-- <div class="work-blurb">
       <h3>image.png</h3>
       <div class="work-blurb__inner">
         <p>
@@ -179,14 +179,14 @@
     </div>
     <div class="row square">
       <Media media-src="__4" media-type="image" :modifiers="['contain']" caption="The homepage of Apostrophecms.com" />
-      <!-- <Media media-src="__5" media-type="image" :modifiers="['contain']" caption="The homepage of Apostrophecms.com"/> -->
+      <Media media-src="__5" media-type="image" :modifiers="['contain']" caption="The homepage of Apostrophecms.com"/>
       <Media media-src="__6" media-type="image" :modifiers="['contain']" caption="The homepage of Apostrophecms.com" />
     </div>
     <div class="row square">
       <Media media-src="__7" media-type="image" :modifiers="['contain']" caption="The homepage of Apostrophecms.com" />
       <Media media-src="__8" media-type="image" :modifiers="['contain']" caption="The homepage of Apostrophecms.com" />
       <Media media-src="__9" media-type="image" :modifiers="['contain']" caption="The homepage of Apostrophecms.com" />
-    </div>
+    </div> -->
   </div>
 
 </template>

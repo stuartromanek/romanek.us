@@ -18,7 +18,7 @@
           loop 
           playsinline
         >
-          <source :data-src="getMediaPath(mediaSrc, 'webm')" type='video/webm' />
+          <!-- <source :data-src="getMediaPath(mediaSrc, 'webm')" type='video/webm' /> -->
           <source :data-src="getMediaPath(mediaSrc, 'mp4')" type='video/mp4' />
         </video>
         <Loading
@@ -95,7 +95,7 @@
           loop 
           playsinline 
         >
-          <source :data-src="getMediaPath(mediaSrc, 'webm')" type='video/webm' />
+          <!-- <source :data-src="getMediaPath(mediaSrc, 'webm')" type='video/webm' /> -->
           <source :data-src="getMediaPath(mediaSrc, 'mp4')" type='video/mp4' />
         </video>
 
