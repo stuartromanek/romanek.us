@@ -5,13 +5,13 @@
     </div>
     <div class="info">
       <span>Stuart Romanek</span>
-      <span>2025</span>
+      <span>2026</span>
       <a href="mailto:sdr@romanek.us">Email</a>
       <a target="_blank" href="https://github.com/stuartromanek">GitHub</a>
       <a target="_blank" href="https://www.linkedin.com/in/stuart-romanek-796269191">LinkedIn</a>
       <a target="_blank" href="https://www.are.na/stuart-romanek">Are.na</a>
-      <a target="_blank" href="https://literal.club/stu">Reading</a>
-      <a target="_blank" href="https://record.club/stu">Listening</a>
+      <!-- <a target="_blank" href="https://literal.club/stu">Reading</a> -->
+      <!-- <a target="_blank" href="https://record.club/stu">Listening</a> -->
       <!-- <a target="_blank" href="https://record.club/stu">Colophon</a> -->
       <span class="net-container" @mouseover="show" @mouseout="showNet = false">
         <div v-show="showNet" ref="video" class="net">

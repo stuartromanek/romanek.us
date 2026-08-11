@@ -14,8 +14,8 @@ export default defineNuxtConfig({
     'nuxt-umami'
   ],
   umami: {
-    id: '4ecfa65f-01a0-4648-977f-076a99709017',
-    host: 'https://cloud.umami.is',
+    id: '3b282076-cec8-42b6-9884-d8ea56c841dc',
+    host: 'https://umami-production-d6f7.up.railway.app',
     autoTrack: true,
     // proxy: 'cloak',
     // useDirective: true,
