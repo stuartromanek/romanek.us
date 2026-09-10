@@ -8,7 +8,7 @@
 
 
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, onUnmounted } from 'vue';
 const loadingSequence = [
   '▓▒▒▒▒▒▒▒▒▒',
   '▒▓▒▒▒▒▒▒▒▒',
@@ -22,12 +22,17 @@ const loadingSequence = [
   '▒▒▒▒▒▒▒▒▒▓',
  ];
 const current = ref(loadingSequence[0]);
+let timer
 
 onMounted(() => {
   let now = 0;
-  window.setInterval(() => {
+  timer = window.setInterval(() => {
     current.value = loadingSequence[now++ % loadingSequence.length]
   }, 100);
+})
+
+onUnmounted(() => {
+  if (timer) window.clearInterval(timer)
 })
 </script>
 

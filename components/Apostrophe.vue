@@ -163,7 +163,7 @@
 import ApostropheLogo from './public/images/apostrophecms-primary.svg'
 </script>
 <style scoped lang="scss">
-@import "~/assets/css/work-gallery.scss";
+@use "~/assets/css/work-gallery.scss";
 
 .content {
   position: relative;

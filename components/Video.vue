@@ -21,7 +21,7 @@
 </template>
 
 <script setup>
-import { onMounted, useTemplateRef, ref, defineProps } from 'vue'
+import { onMounted, useTemplateRef, ref } from 'vue'
 import { filename } from 'pathe/utils';
 
 const glob = import.meta.glob('~/assets/video/*.mp4', { eager: true });

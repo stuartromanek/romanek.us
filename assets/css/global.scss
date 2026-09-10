@@ -1,3 +1,5 @@
+@use "sass-variables" as vars;
+
 :host, html {
   line-height: 1.5;
   -webkit-text-size-adjust: 100%;
@@ -111,17 +113,20 @@ p {
   width: 1px;
 }
 
-// Fade up text
-h1, h2, h3, h4, h5, h6, p, a, span:not([class]), .details, img, svg, .square-shape, .circle-shape {
-  opacity: 0;
-  transition: opacity 2s ease, filter 2s ease,;
-  filter: blur(2px);
+@media (prefers-reduced-motion: no-preference) {
+  .work {
+    animation: work-in 0.55s ease both;
+  }
 }
 
-.mounted {
-  h1, h2, h3, h4, h5, h6, p, a, span:not([class]), .details, img, svg, .square-shape, .circle-shape {
+@keyframes work-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
     opacity: 1;
-    filter: blur(0);
+    transform: none;
   }
 }
 

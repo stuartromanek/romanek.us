@@ -1,5 +1,5 @@
 <template>
-  <section class="work">
+  <section id="punk-web" class="work">
     <div class="row pair">
       <article id="andalusia" class="pair__col">
         <div class="pair__copy">
@@ -30,7 +30,7 @@
 </template>
 
 <style scoped lang="scss">
-@import "~/assets/css/work-gallery.scss";
+@use "~/assets/css/work-gallery.scss";
 
 .work {
   margin-top: 8rem;

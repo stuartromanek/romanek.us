@@ -7,7 +7,7 @@
           <More>
             <p>I aim to create expressive brands and software systems that are honest, resilient, and self-evident.</p>
             <p>
-              I am the founding designer for <a href="http://apostrophecms.com" target="_blank">ApostropheCMS</a>, 
+              I am the founding designer for <a href="https://apostrophecms.com" target="_blank" rel="noopener noreferrer">ApostropheCMS</a>, 
               an open source content management system that aims to marry an unopinionated, developer-first application 
               framework with a rich in-context editing interface. <br /> Think Rails + Squarespace in JavaScript.
             </p>
@@ -17,12 +17,11 @@
         <NuxtImg
           src="/images/stuartromanek.webp"
           alt="Portrait of Stuart Romanek"
-          preload 
           format="webp"
           width="310"
           height="413"
-          sizes="400px"
-          fetchpriority="high"
+          sizes="310px"
+          loading="lazy"
         />
         <!-- <figcaption>
           Me & Otto at Porchfest in W. Philadelphia, 2024

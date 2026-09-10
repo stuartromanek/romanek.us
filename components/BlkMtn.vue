@@ -29,7 +29,7 @@
 </template>
 
 <style scoped lang="scss">
-@import "~/assets/css/work-gallery.scss";
+@use "~/assets/css/work-gallery.scss";
 
 .work {
   margin-top: 8rem;

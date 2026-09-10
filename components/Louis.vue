@@ -3,7 +3,8 @@
     <div class="intro">
       <div class="logo">
         <LouisLogo class="logo__mark" :filled="true" :font-controlled="false" />
-        <p class="logo-wordmark" aria-label="Louis!">
+        <p class="logo-wordmark">
+          <span class="visually-hidden">Louis!</span>
           <span class="logo-wordmark__letter logo-wordmark__letter--l" style="--tilt: -4deg" aria-hidden="true">L</span>
           <span class="logo-wordmark__letter logo-wordmark__letter--o" style="--tilt: 3deg" aria-hidden="true">o</span>
           <span class="logo-wordmark__letter logo-wordmark__letter--u" style="--tilt: -2deg" aria-hidden="true">u</span>
@@ -104,7 +105,7 @@
 import LouisLogo from './public/images/louis-yoto.svg'
 </script>
 <style scoped lang="scss">
-@import "~/assets/css/work-gallery.scss";
+@use "~/assets/css/work-gallery.scss";
 
 @font-face {
   font-family: "Saeada";

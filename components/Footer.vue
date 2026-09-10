@@ -25,7 +25,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, useTemplateRef, defineProps, ref } from 'vue'
+import { computed, onMounted, useTemplateRef, ref } from 'vue'
 
 const showNet = ref(false);
 const video = useTemplateRef('video');

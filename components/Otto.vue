@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, useTemplateRef, defineProps } from 'vue'
+import { computed, onMounted, useTemplateRef } from 'vue'
 
 const props = defineProps({
   size: {

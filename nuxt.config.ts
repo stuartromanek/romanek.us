@@ -4,11 +4,8 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: true,
   modules: [
-    '@nuxt/content',
     '@nuxt/eslint',
-    '@nuxt/fonts',
     '@nuxt/image',
-    '@nuxt/scripts',
     'nuxt-svgo',
     '@nuxtjs/i18n',
     'nuxt-umami'
@@ -33,29 +30,34 @@ export default defineNuxtConfig({
         lang: 'en',
       },
       meta: [
-        { name: 'title', content: 'Stuart Romanek · Design & Code' },
-        { name: 'description', content: 'Stuart Romanek on the world wide web' },
         { name: 'author', content: 'Stuart Romanek' },
         { name: 'theme-color', content: '#000000' }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-        { rel: 'icon', type: 'image/svg', href: '/favicon.svg' }
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        {
+          rel: 'preload',
+          href: '/fonts/InterVariable.woff2',
+          as: 'font',
+          type: 'font/woff2',
+          crossorigin: 'anonymous'
+        }
       ]
     }
   },
-  // devtools: { enabled: false },
-  css: [
-    '~/assets/css/inter.scss',
-    '~/assets/css/variables.scss',
-    '~/assets/css/global.scss'
-  ],
+  // Global CSS is imported from app.vue so Nuxt inlines it into the HTML
+  // instead of emitting a render-blocking /_nuxt/entry.*.css link.
+  features: {
+    inlineStyles: true
+  },
   devServer: {
     port: 8000,
     host: '0'
   },
 
   image: {
+    quality: 80,
     format: ['webp'],
     screens: {
       xs: 320,
@@ -84,5 +86,28 @@ export default defineNuxtConfig({
     locales: [
       { code: 'en', name: 'English', file: 'en.json' },
     ]
+  },
+
+  hooks: {
+    // Vue SFC styles are already inlined in the HTML. The leftover entry.css
+    // link duplicates them and is render-blocking — drop the link.
+    'nitro:init'(nitro) {
+      nitro.hooks.hook('prerender:generate', (route) => {
+        if (!route.contents) return
+        route.contents = route.contents
+          // Vue SFC styles are already inlined. The leftover entry.css link
+          // duplicates them and is render-blocking.
+          .replace(
+            /<link rel="stylesheet" href="(\/_nuxt\/entry\.[^"']+\.css)"[^>]*>/,
+            ''
+          )
+          // Nuxt prefetches every async chunk in the HTML. On Slow 4G that
+          // steals bandwidth from LCP; hydrate-on-visible fetches them later.
+          .replace(
+            /<link rel="prefetch"[^>]*>/g,
+            ''
+          )
+      })
+    }
   }
 })

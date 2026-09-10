@@ -13,6 +13,7 @@
           ref="videoRef"
           class="media-element"
           :style="{height: videoPlaying ? 'auto' : '0.5px'}"
+          :aria-label="mediaLabel"
           autoplay 
           muted 
           loop 
@@ -25,28 +26,24 @@
           v-show="!videoPlaying"
         />
       </template>
-      <NuxtImg
+      <div
         v-else
-        v-slot="{ src, isLoaded, imgAttrs }"
-        class="media-element"
-        :alt="mediaSrc"
-        :src="getMediaPath(mediaSrc)"
-        :custom="true"
-        format="webp"
-        loading="lazy"
-        fetchpriority="high"
-        preload
+        class="media-image"
       >
-        <img
-          v-if="isLoaded"
-          ref="imageRef"
-          v-bind="imgAttrs"
-          :src="src"
-        >
-        <Loading
-          v-else
+        <NuxtImg
+          class="media-element"
+          :alt="mediaLabel"
+          :src="getMediaPath(mediaSrc)"
+          format="webp"
+          loading="lazy"
+          sizes="xs:100vw sm:100vw md:800px lg:1200px"
+          :width="imageWidth"
+          :height="imageHeight"
+          decoding="async"
+          @load="onImageLoad"
         />
-      </NuxtImg>
+        <Loading v-show="!imageLoaded" />
+      </div>
       <div class="controls controls--inline">
         <TransitionGroup 
           v-if="mediaType === 'video'"
@@ -90,6 +87,7 @@
           v-if="mediaType === 'video'"
           ref="twinVideoRef"
           class="twin-media"
+          :aria-label="mediaLabel"
           autoplay 
           muted 
           loop 
@@ -104,10 +102,12 @@
           v-else
           :src="getMediaPath(mediaSrc)"
           class="twin-media"
-          :alt="mediaSrc"
-          sizes="1536px sm:100vw md:800px"
+          :alt="mediaLabel"
+          sizes="xs:100vw sm:100vw md:800px lg:1536px"
           loading="lazy"
           format="webp"
+          :width="imageWidth"
+          :height="imageHeight"
         />
         <div class="controls controls--fullscreen">
           <TransitionGroup 
@@ -162,14 +162,40 @@ const getMediaPath = function(name, vFormat = undefined) {
   return `/work/${type}/${ vFormat ? vFormat + '/compressed/' : ''}${name}.${ext}`;
 }
 
+const fallbackMediaLabel = {
+  'andalusia-mobile': 'Andalusia Foundation mobile site',
+  'orphan-mobile': 'Orphan Disease Center mobile site',
+  'ccd-mobile': 'Center City District mobile site',
+}
+
+const { t } = useI18n()
+const mediaLabel = computed(() => {
+  if (props.caption) {
+    return props.caption
+  }
+  const translated = t(props.mediaSrc)
+  if (translated !== props.mediaSrc) {
+    return translated
+  }
+  if (fallbackMediaLabel[props.mediaSrc]) {
+    return fallbackMediaLabel[props.mediaSrc]
+  }
+  return props.mediaSrc.replace(/-web$/, '').replace(/-/g, ' ')
+})
+
+const imageWidth = 1600
+const imageHeight = computed(() => (
+  props.modifiers.includes('square') ? 1600 : 1000
+))
+
 const containerRef = ref(null)
 const twinVideoRef = ref(null)
 const twinRef = ref(null)
 const speedButtonRef = ref(null)
 const fullscreenSpeedButtonRef = ref(null)
 const videoRef = ref(null)
-const imageRef = ref(null)
 const videoPlaying = ref(false)
+const imageLoaded = ref(false)
 let observer = null
 
 const isZoomed = ref(false)
@@ -409,9 +435,26 @@ function handleMediaDoubleClick(event) {
   }
 }
 
+function onImageLoad() {
+  imageLoaded.value = true
+}
+
+function syncImageLoaded() {
+  const img = containerRef.value?.querySelector('img.media-element')
+  if (!img) return
+  img.addEventListener('load', onImageLoad, { once: true })
+  if (!img.complete || img.getAttribute('data-error')) return
+  if (img.naturalWidth) {
+    imageLoaded.value = true
+    return
+  }
+  img.decode?.().then(onImageLoad).catch(() => {})
+}
+
 onMounted(() => {
   window.addEventListener('keydown', handleKeydown);
   setButtonWidth();
+  syncImageLoaded()
   if (videoRef.value) {
     videoRef.value.addEventListener('playing', () => {
       videoPlaying.value = true;
@@ -494,6 +537,17 @@ onUnmounted(() => {
   // min-height: 400px;
 }
 
+.media-image {
+  position: relative;
+  width: 100%;
+}
+
+.media-image :deep(.loading) {
+  position: absolute;
+  inset: 0;
+  min-height: 0;
+}
+
 .media-container:hover .controls,
 .fullscreen-twin .controls {
   opacity: 1;
@@ -540,6 +594,7 @@ figure:hover {
   position: absolute;
   right: 1rem;
   top: 1rem;
+  z-index: 3;
   display: flex;
   gap: 0.25rem;
   transition: all 0.3s ease;

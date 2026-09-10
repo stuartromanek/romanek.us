@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "lighthouse": {
+      "source": "nimajafari/lighthouse-skill",
+      "sourceType": "github",
+      "skillPath": "skills/lighthouse/SKILL.md",
+      "computedHash": "98b1e5682d1cbf9306899f06566210fceab162d5aca9e3c6411eafca78751727"
+    }
+  }
+}

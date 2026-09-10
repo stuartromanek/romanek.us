@@ -2,7 +2,14 @@
   <header>
     <section>
       <div id="headshot">
-        <NuxtImg src="/images/stuartromanek.webp" alt="Head shot of Stuart Romanek" />
+        <NuxtImg
+          src="/images/stuartromanek.webp"
+          alt="Head shot of Stuart Romanek"
+          width="110"
+          height="147"
+          sizes="110px"
+          format="webp"
+        />
       </div>
       <h1 id="name">
         Stuart Romanek
@@ -21,7 +28,7 @@
       </span>
       <span id="contact" class="group">
         <div class="square-shape" />
-        <a href="mail:sdr@romanek.us">sdr@romanek.us</a>
+        <a href="mailto:sdr@romanek.us">sdr@romanek.us</a>
       </span>
     </section>
   </header>
