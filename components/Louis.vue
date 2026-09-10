@@ -60,16 +60,16 @@
       </div>
     </div>
 
-    <Media media-src="louis-overview" />
+    <Media media-src="louis-overview-web" />
 
     <div class="row square">
-      <Media media-src="louis-youtube-shortcuts" />
-      <Media media-src="louis-playlist-artwork" />
-      <Media media-src="louis-track-art" />
+      <Media media-src="louis-youtube-shortcuts-web" />
+      <Media media-src="louis-playlist-artwork-web" />
+      <Media media-src="louis-track-art-web" />
     </div>
 
     <div class="split split--reverse">
-      <Media media-src="louis-trim" />
+      <Media media-src="louis-trim-web" />
       <div class="split__copy">
         <h3>Cut the “Like and subscribe”</h3>
         <p>
@@ -88,14 +88,14 @@
     </div>
 
     <div class="row phones">
-      <Media media-src="louis-phone-search" />
-      <Media media-src="louis-phone-library" />
-      <Media media-src="louis-phone-add" />
-      <Media media-src="louis-phone-menu" />
+      <Media media-src="louis-phone-search-web" />
+      <Media media-src="louis-phone-library-web" />
+      <Media media-src="louis-phone-add-web" />
+      <Media media-src="louis-phone-menu-web" />
     </div>
 
     <div class="offset">
-      <Media media-src="louis-setup" />
+      <Media media-src="louis-setup-web" />
     </div>
   </section>
 </template>
