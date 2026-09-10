@@ -1,14 +1,14 @@
 # Stuart Romanek
 
-Stuart Romanek is a designer and engineer working on product, brand, and open source software. He is the founding designer of ApostropheCMS.
+> Designer and engineer working on product, brand, and open source. Founding designer of ApostropheCMS.
 
-Site: https://romanek.us/
-Contact: sdr@romanek.us
+Stuart Romanek's site is [romanek.us](https://romanek.us/). Contact: sdr@romanek.us. Open to new projects, people, and ideas.
 
 ## Work
 
-- ApostropheCMS — open source CMS and in-context editing tools. https://apostrophecms.com
-- Louis — a Make Your Own studio that turns YouTube content into playlists for the Yoto player. https://louis.romanek.us/ · https://github.com/stuartromanek/louis
+- [ApostropheCMS](https://apostrophecms.com): Open source CMS and in-context editing tools
+- [Louis](https://louis.romanek.us/): A Make Your Own studio that turns YouTube content into playlists for the Yoto player
+- [Louis on GitHub](https://github.com/stuartromanek/louis): Source for Louis
 - BLK MTN — identity and first major web release for an LA-based production and talent company
 - The Andalusia Foundation — historic Biddle estate website (P'unk Avenue)
 - The Orphan Disease Center — University of Pennsylvania / CHOP research site (P'unk Avenue)
@@ -17,8 +17,6 @@ Contact: sdr@romanek.us
 
 ## Also
 
-- GitHub: https://github.com/stuartromanek
-- LinkedIn: https://www.linkedin.com/in/stuart-romanek-796269191
-- Are.na: https://www.are.na/stuart-romanek
-
-Open to new projects, people, and ideas.
+- [GitHub](https://github.com/stuartromanek)
+- [LinkedIn](https://www.linkedin.com/in/stuart-romanek-796269191)
+- [Are.na](https://www.are.na/stuart-romanek)
