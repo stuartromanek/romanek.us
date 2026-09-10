@@ -4,6 +4,12 @@
     <About />
     <h3>Select Works</h3>
     <Apostrophe />
+    <Louis />
+    <BlkMtn />
+    <Andalusia />
+    <Orphan />
+    <Wrt />
+    <Ccd />
     <Experience />
   </div>
   <Footer />
@@ -13,6 +19,13 @@
 
 <script setup>
   import { onMounted, onBeforeUnmount } from 'vue'
+  import Apostrophe from '~/components/Apostrophe.vue'
+  import Louis from '~/components/Louis.vue'
+  import BlkMtn from '~/components/BlkMtn.vue'
+  import Andalusia from '~/components/Andalusia.vue'
+  import Orphan from '~/components/Orphan.vue'
+  import Wrt from '~/components/Wrt.vue'
+  import Ccd from '~/components/Ccd.vue'
 
   let mediaQueries = []
 
