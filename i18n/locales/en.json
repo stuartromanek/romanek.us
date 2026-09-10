@@ -14,5 +14,15 @@
   "wrt-desktop": "WRT is a team of planners, urban designers, architects, and landscape architects with offices in Philadelphia and San Francisco. A P'unk Avenue project.",
   "ccd-desktop": "The Center City District (CCD) and Central Philadelphia Development Corporation (CPDC) work to enhance the vitality of Center City Philadelphia as a thriving 24-hour downtown and a great place to work, live, and have fun. A P'unk Avenue project. ",
   "andalusia-mobile": "The Andalusia Foundation. A P'unk Avenue project.",
-  "orphan-mobile": "The Orphan Disease Center, uniting investigators and clinicians within The University of Pennsylvania, Children's Hospital of Philadelphia, and others internationally. A P'unk Avenue project."
+  "orphan-mobile": "The Orphan Disease Center, uniting investigators and clinicians within The University of Pennsylvania, Children's Hospital of Philadelphia, and others internationally. A P'unk Avenue project.",
+  "louis-overview": "Search, arrange a playlist, and sync to a Yoto.",
+  "louis-youtube-shortcuts": "Find a song, or paste a video, playlist, or channel link.",
+  "louis-playlist-artwork": "Generated covers, upload, or crop a 5×7.",
+  "louis-trim": "Waveform in/out on a YouTube source.",
+  "louis-phone-search": "Search YouTube or paste a link.",
+  "louis-phone-library": "Browse playlists in Library.",
+  "louis-phone-add": "Add tracks from the drawer.",
+  "louis-phone-menu": "Update every pending playlist in Menu.",
+  "louis-track-art": "Choose from a pre-made pixel art library or draw your own.",
+  "louis-setup": "Electron install and setup wizard."
 }
