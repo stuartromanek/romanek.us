@@ -89,24 +89,56 @@ export default defineNuxtConfig({
   },
 
   hooks: {
-    // Vue SFC styles are already inlined in the HTML. The leftover entry.css
-    // link duplicates them and is render-blocking — drop the link.
+    // Vue SFC styles are already inlined. Vite still emits a render-blocking
+    // entry.css link (and prefetches every async chunk). Strip both in the
+    // HTML renderer so it applies to generate *and* Cloudflare SSR.
+    'render:html'(html) {
+      const strip = (chunk) =>
+        chunk
+          .replace(/<link(?=[^>]*rel="stylesheet")(?=[^>]*\/_nuxt\/entry\.)[^>]*>/gi, '')
+          .replace(/<link(?=[^>]*rel="prefetch")[^>]*>/gi, '')
+      for (const key of ['head', 'bodyPrepend', 'body', 'bodyAppend']) {
+        if (Array.isArray(html[key])) html[key] = html[key].map(strip)
+      }
+      // Cloudflare Email Address Obfuscation injects a render-blocking
+      // email-decode script when it sees @-addresses in the HTML.
+      html.bodyPrepend = html.bodyPrepend || []
+      html.bodyAppend = html.bodyAppend || []
+      html.bodyPrepend.unshift('<!--email_off-->')
+      html.bodyAppend.push('<!--email_on-->')
+    },
     'nitro:init'(nitro) {
+      const strip = (html) => {
+        let next = html
+          .replace(/<link(?=[^>]*rel="stylesheet")(?=[^>]*\/_nuxt\/entry\.)[^>]*>/gi, '')
+          .replace(/<link(?=[^>]*rel="prefetch")[^>]*>/gi, '')
+        if (!next.includes('<!--email_off-->')) {
+          next = next
+            .replace(/<body([^>]*)>/, '<body$1><!--email_off-->')
+            .replace('</body>', '<!--email_on--></body>')
+        }
+        return next
+      }
+
       nitro.hooks.hook('prerender:generate', (route) => {
         if (!route.contents) return
-        route.contents = route.contents
-          // Vue SFC styles are already inlined. The leftover entry.css link
-          // duplicates them and is render-blocking.
-          .replace(
-            /<link rel="stylesheet" href="(\/_nuxt\/entry\.[^"']+\.css)"[^>]*>/,
-            ''
-          )
-          // Nuxt prefetches every async chunk in the HTML. On Slow 4G that
-          // steals bandwidth from LCP; hydrate-on-visible fetches them later.
-          .replace(
-            /<link rel="prefetch"[^>]*>/g,
-            ''
-          )
+        route.contents = strip(route.contents)
+      })
+
+      nitro.hooks.hook('close', async () => {
+        const { promises: fs } = await import('node:fs')
+        const { join } = await import('node:path')
+        const dir = nitro.options.output.publicDir
+        for (const name of ['index.html', '200.html', '404.html']) {
+          const file = join(dir, name)
+          try {
+            const html = await fs.readFile(file, 'utf8')
+            const next = strip(html)
+            if (next !== html) await fs.writeFile(file, next)
+          } catch {
+            // File may not exist for this preset.
+          }
+        }
       })
     }
   }

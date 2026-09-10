@@ -58,7 +58,6 @@
               '@id': `${siteUrl}/#person`,
               name: 'Stuart Romanek',
               url: siteUrl,
-              email: 'sdr@romanek.us',
               jobTitle: 'Designer and engineer',
               image: portrait,
               knowsAbout: [

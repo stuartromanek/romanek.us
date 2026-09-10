@@ -28,7 +28,7 @@
       </span>
       <span id="contact" class="group">
         <div class="square-shape" />
-        <a href="mailto:sdr@romanek.us">sdr@romanek.us</a>
+        <!--email_off--><a href="mailto:sdr@romanek.us">sdr@romanek.us</a><!--email_on-->
       </span>
     </section>
   </header>

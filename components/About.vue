@@ -7,7 +7,7 @@
           <More>
             <p>I aim to create expressive brands and software systems that are honest, resilient, and self-evident.</p>
             <p>
-              I am the founding designer for <a href="https://apostrophecms.com" target="_blank" rel="noopener noreferrer">ApostropheCMS</a>, 
+              I am the founding designer for <a href="https://apostrophecms.com" target="_blank" rel="noopener noreferrer" class="underlined-link">ApostropheCMS</a>, 
               an open source content management system that aims to marry an unopinionated, developer-first application 
               framework with a rich in-context editing interface. <br /> Think Rails + Squarespace in JavaScript.
             </p>
@@ -21,7 +21,8 @@
           width="310"
           height="413"
           sizes="310px"
-          loading="lazy"
+          loading="eager"
+          fetchpriority="high"
         />
         <!-- <figcaption>
           Me & Otto at Porchfest in W. Philadelphia, 2024
@@ -59,6 +60,8 @@
 
       a {
         color: var(--color-green);
+        text-decoration: underline;
+        text-underline-offset: 4px;
       }
     }
   }

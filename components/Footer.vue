@@ -6,7 +6,7 @@
     <div class="info">
       <span>Stuart Romanek</span>
       <span>2026</span>
-      <a href="mailto:sdr@romanek.us">Email</a>
+      <!--email_off--><a href="mailto:sdr@romanek.us">Email</a><!--email_on-->
       <a target="_blank" href="https://github.com/stuartromanek">GitHub</a>
       <a target="_blank" href="https://www.linkedin.com/in/stuart-romanek-796269191">LinkedIn</a>
       <a target="_blank" href="https://www.are.na/stuart-romanek">Are.na</a>
