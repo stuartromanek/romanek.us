@@ -9,11 +9,13 @@
       </div>
     </div>
     <div class="work-items">
-      <Media media-src="ccd-desktop" />
-      <Media
-        media-src="ccd-mobile"
-        :modifiers="['contain', 'center', 'mobile-width']"
-      />
+      <div class="row ccd-pair">
+        <Media media-src="ccd-desktop" />
+        <Media
+          media-src="ccd-mobile"
+          :modifiers="['contain']"
+        />
+      </div>
     </div>
   </section>
 </template>
@@ -28,6 +30,30 @@
   @media (max-width: vars.$mobile-breakpoint) {
     margin-top: 4rem;
     scroll-margin-top: 1rem;
+  }
+}
+
+.ccd-pair {
+  align-items: flex-start;
+
+  :deep(#media-ccd-desktop) {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: none;
+  }
+
+  :deep(#media-ccd-mobile) {
+    flex: 0 0 auto;
+    width: 22%;
+    max-width: 280px;
+  }
+
+  @media (max-width: 600px) {
+    :deep(#media-ccd-mobile) {
+      width: 70vw;
+      max-width: 280px;
+      align-self: center;
+    }
   }
 }
 </style>
