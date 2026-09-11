@@ -74,6 +74,7 @@
         {{ $t(mediaSrc) }}
       </figcaption>
     </figure>
+    <Teleport to="body">
     <Transition>
       <div 
         v-show="isZoomed || isAnimating"
@@ -104,7 +105,7 @@
           class="twin-media"
           :alt="mediaLabel"
           sizes="xs:100vw sm:100vw md:800px lg:1536px"
-          loading="lazy"
+          loading="eager"
           format="webp"
           :width="imageWidth"
           :height="imageHeight"
@@ -134,6 +135,7 @@
         </div>
       </div>
     </Transition>
+    </Teleport>
   </div>
 </template>
 
@@ -356,6 +358,7 @@ async function triggerZoom() {
     
     isZoomed.value = true
     isAnimating.value = true
+    document.body.classList.add('zoomed')
     
     await new Promise(resolve => setTimeout(resolve, 10))
     
@@ -378,6 +381,7 @@ async function triggerZoom() {
     console.error('Zoom animation failed:', error)
     isAnimating.value = false
     isZoomed.value = false
+    document.body.classList.remove('zoomed')
   }
 }
 
@@ -412,11 +416,13 @@ async function closeZoom() {
     
     isZoomed.value = false
     isAnimating.value = false
+    document.body.classList.remove('zoomed')
     
   } catch (error) {
     console.error('Close animation failed:', error)
     isAnimating.value = false
     isZoomed.value = false
+    document.body.classList.remove('zoomed')
   }
 }
 
@@ -475,6 +481,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+  document.body.classList.remove('zoomed')
   window.removeEventListener('keydown', handleKeydown);
   if (videoRef.value) {
     if (observer && videoRef.value) {
